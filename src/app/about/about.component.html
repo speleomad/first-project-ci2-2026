@@ -1,0 +1,53 @@
+<div class="card border-primary">
+    <div class="card-header bg-primary text-white">
+        About Component
+    </div>
+    <div class="card-body">
+        <h1>Info:</h1>
+        <ul>
+            <li>Name: {{info.name}}</li>
+            <li>Email: {{info.email}}</li>
+            <li>Tel: {{info.tel}}</li>
+        </ul>
+
+        <div class="form-group">
+            <div class="input-group">
+                <label for="">Message: </label>
+                <input type="text" class="form-control" [(ngModel)]="comment.message">
+            </div>
+
+            <button class="btn btn-primary mt-3" (click)="addComment()" [disabled]="newComment">
+                Add comment
+            </button>
+        </div>
+
+        <div *ngIf="comments.length>0; else noComment">
+            <h3>Messages:</h3>
+            <ul class="list-group">
+                <ng-container *ngFor="let comment of comments; let i=index, let isEven=even, let isOdd=odd">
+                  <!--  <li *ngIf="isEven"  -->
+                     <li 
+                         class="list-group-item d-flex justify-content-between align-items-center"
+                         [ngClass]="{'bg-odd':isOdd, 'bg-even':isEven}">
+                        {{i+1}}#{{comment.message}} <span
+                            class="badge badge-secondary badge-pill">{{comment.date|date:"HH:mm:ss"}}</span>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+
+        <ng-template #noComment>
+            <p>No comment found!</p>
+        </ng-template>
+    </div>
+
+
+</div>
+
+
+<!-- <h1>Names</h1>
+<ul>
+    <li *ngFor="let name of names">
+        {{name}}
+    </li>
+</ul> -->

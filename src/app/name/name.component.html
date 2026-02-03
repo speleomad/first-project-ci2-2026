@@ -1,0 +1,13 @@
+<h1>NameComponent</h1>
+<h2>Liste des noms</h2>
+
+<div *ngIf="names.length > 0; else noName">
+  <ul>
+    <li *ngFor="let name of names">{{ name }}</li>
+  </ul>
+  <button (click)="reset()">Reset</button>
+</div>
+
+<ng-template #noName>
+  <p>Pas de nom disponible</p>
+</ng-template>

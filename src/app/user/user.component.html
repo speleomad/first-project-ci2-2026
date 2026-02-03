@@ -1,0 +1,21 @@
+<h1>UserComponent</h1>
+
+<h2>Liste des utilisateurs</h2>
+
+<ng-container *ngIf="users.length > 0; else noUser">
+  
+  <div *ngFor="let user of users; let isEven = even; let isOdd = odd" 
+       [ngClass]="{ 'even': isEven, 'odd': isOdd }">   
+    
+    <strong>Nom :</strong> {{ user.nom }} | 
+    <strong>Âge :</strong> {{ user.age }} ans | 
+    <strong>Email :</strong> {{ user.email }}
+  </div>
+
+  <br>
+  <button (click)="reset()">Reset</button>
+</ng-container>
+
+<ng-template #noUser>
+  <p>Aucun utilisateur trouvé dans la base de données</p>
+</ng-template>
