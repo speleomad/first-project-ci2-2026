@@ -1,0 +1,23 @@
+   <div *ngIf="commentList.length>0; else noComment">
+            <h3>Messages from comment component:</h3>
+            {{'Hello'|getChar:2}}
+            <ul class="list-group">
+                <ng-container *ngFor="let comment of commentList; let i=index, let isEven=even, let isOdd=odd">
+                  <!--  <li *ngIf="isEven"  -->
+                    <!--  <li 
+                         class="list-group-item d-flex justify-content-between align-items-center"
+                         [ngClass]="{'bg-odd':isOdd, 'bg-even':isEven}"> -->
+                         <li 
+                         class="list-group-item d-flex justify-content-between align-items-center">
+                        {{i+1}}#{{comment.message }} <span
+                            class="badge  badge-pill"
+                            [ngClass]="{'badge-success':isEven, 'badge-danger':isOdd}"
+                            >{{comment.date|date:"HH:mm:ss"}}</span>
+                    </li>
+                </ng-container>
+            </ul>
+        </div>
+
+        <ng-template #noComment>
+            <p>No comment found!</p>
+        </ng-template>

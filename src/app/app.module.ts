@@ -8,6 +8,8 @@ import { ContactsComponent } from './contacts/contacts.component';
 import { FormsModule } from '@angular/forms';
 import { NameComponent } from './name/name.component';
 import { UserComponent } from './user/user.component';
+import { GetCharPipe } from './pipes/get-char.pipe';
+import { CommentComponent } from './comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { UserComponent } from './user/user.component';
     AboutComponent,
     ContactsComponent,
     NameComponent,
-    UserComponent
+    UserComponent,
+    GetCharPipe,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
