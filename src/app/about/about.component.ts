@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AboutService } from '../services/about.service';
 import { Comment } from '../shared/comment';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-about',
@@ -14,7 +15,8 @@ export class AboutComponent implements OnInit {
    comment:Comment={id:-1,date:null, message:""};
    
 
-  constructor(private aboutService: AboutService){} 
+  constructor(private aboutService: AboutService,
+              private router: Router){} 
   ngOnInit(): void {
     this.info=this.aboutService.getInfos();
     this.comments=this.aboutService.getAllComment();
@@ -35,4 +37,8 @@ addComment(){
   //this.newComment=true;
 }
   /*   names=["demo1","demo2","demo3"]; */
+onContacts(){
+  this.router.navigateByUrl("/contacts");
 }
+}
+

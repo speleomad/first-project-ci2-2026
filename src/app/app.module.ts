@@ -10,6 +10,9 @@ import { NameComponent } from './name/name.component';
 import { UserComponent } from './user/user.component';
 import { GetCharPipe } from './pipes/get-char.pipe';
 import { CommentComponent } from './comment/comment.component';
+import { HomeComponent } from './home/home.component';
+import { SigninComponent } from './signin/signin.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { CommentComponent } from './comment/comment.component';
     NameComponent,
     UserComponent,
     GetCharPipe,
-    CommentComponent
+    CommentComponent,
+    HomeComponent,
+    SigninComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
