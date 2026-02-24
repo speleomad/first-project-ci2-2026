@@ -14,6 +14,7 @@ import { HomeComponent } from './home/home.component';
 import { SigninComponent } from './signin/signin.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ContactDetailComponent } from './contact-detail/contact-detail.component';
+import { EditContactComponent } from './edit-contact/edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ContactDetailComponent } from './contact-detail/contact-detail.componen
     HomeComponent,
     SigninComponent,
     NotFoundComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    EditContactComponent
   ],
   imports: [
     BrowserModule,

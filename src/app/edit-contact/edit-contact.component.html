@@ -1,0 +1,36 @@
+<div class="card border-primary mb-3">
+    <div class="card-header bg-primary text-white "> Edit Contact Component</div>
+    <div class="card-body">
+        <h3>Add Contact</h3>
+       <!--  <form> -->
+            <form  (ngSubmit)="onSubmit(form)" #form="ngForm"> 
+            <div class="form-group">
+                <label for="name">Name</label>
+               
+                <input type="text" class="form-control" name="name"  ngModel> 
+            </div>
+            <div class="form-row">
+                <div class="col">
+                    <label for="email">Email</label>
+                  
+                      <input type="email" class="form-control" name="email" ngModel> 
+
+                </div>
+                <div class="col">
+                    <label for="website">Website</label>
+                    
+                 <input type="text" class="form-control" name="website" ngModel> 
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="projects">Projects (separated with comma",")</label>
+               
+                  <input type="text" class="form-control" name="projects"  ngModel>
+            </div>
+            <button type="submit" class="btn btn-primary"> Save </button>
+
+        </form>
+    </div>
+</div>
+<button class="btn btn-primary" (click)="onContacts()">Go to Contacts</button>
