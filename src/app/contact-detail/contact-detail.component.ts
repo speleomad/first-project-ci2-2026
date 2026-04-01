@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Contact } from '../shared/contact';
 import { Subscription } from 'rxjs';
@@ -17,12 +17,20 @@ export class ContactDetailComponent  implements OnInit, OnDestroy{
 
   constructor(private contactService: ContactService,
               private route: ActivatedRoute,
-              private router:Router){}
+              private router:Router,
+              @Inject('BaseURL') public baseURL:string){}
  
   ngOnInit(): void {
       /*snapshot method */ 
        this.idContact=this.route.snapshot.params['id'];
-       this.contact = this.contactService.getContactById(this.idContact);
+      // this.contact = this.contactService.getContactById(this.idContact);
+      this.contactService.getContactById(this.idContact).subscribe(
+        {
+          next: (contact:Contact|undefined)=>{this.contact=contact},
+          error:(error:any)=>{console.log("error")}
+        }
+      );
+
       // console.log("contact:"+this.contact?.name);
       /*observable method*/
      /* this.routeSub = this.route.paramMap.subscribe(params => {

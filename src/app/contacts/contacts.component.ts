@@ -14,10 +14,27 @@ export class ContactsComponent implements OnInit {
               private router: Router
   ){}
   ngOnInit(): void {
-     this.contacts=this.contactService.getAllContact();
+     //this.contacts=this.contactService.getAllContact();
+     this.contactService.getAllContact().subscribe(
+      {
+        next: (contacts:Contact[])=>{this.contacts=contacts},
+        error:(error)=>{console.log("error")}
+      }
+     )
   }
   onDeleteContact(id:number){
-    this.contactService.deleteContactById(id);
+   // this.contactService.deleteContactById(id);
+   this.contactService.deleteContactById(id).subscribe(
+    {
+      next: ()=>{console.log("success");
+        let index= this.contacts.findIndex(contact=>contact.id==id);
+        if(index!=-1){
+        this.contacts.splice(index,1)
+    }
+      },
+      error: (error)=>{console.log("failed")}
+    }
+   )
   }
 
     onAddContact(){
