@@ -14,6 +14,8 @@ export class SigninComponent implements OnInit {
     this.authService.authSubject.subscribe({
       next:(isAuth:boolean)=>{this.isAuth=isAuth;}
     })
+  //Trigger the authsubject 
+  //this.authService.emitAuthSubject();
   }
   onSignIn() {
     this.authService.signIn();

@@ -41,7 +41,7 @@ export class EditContactReactiveFormComponent implements OnInit {
           featured: false,
           image: '../../assets/images/default-avatar.jpg'
         }
-        contact= this.contactService.addContact(contact);
+        contact= this.contactService.addContactReactiveForms(contact);
         this.router.navigateByUrl("/contacts/"+contact.id);
   }   
 

@@ -9,7 +9,9 @@ import { Router } from '@angular/router';
   styleUrl: './contacts.component.css'
 })
 export class ContactsComponent implements OnInit {
- contacts!:Contact[];
+ contacts:Contact[]=[];
+ isWaiting:boolean=true;
+ errMsg:string="";
   constructor(private contactService: ContactService,
               private router: Router
   ){}
@@ -17,8 +19,9 @@ export class ContactsComponent implements OnInit {
      //this.contacts=this.contactService.getAllContact();
      this.contactService.getAllContact().subscribe(
       {
-        next: (contacts:Contact[])=>{this.contacts=contacts},
-        error:(error)=>{console.log("error")}
+        next:(contacts:Contact[])=>{this.contacts=contacts;this.isWaiting=false},
+        error:(err)=>{console.log(err); this.errMsg=err;this.isWaiting=false},
+        complete:()=>{console.log("contact data loaded");}
       }
      )
   }
@@ -38,7 +41,7 @@ export class ContactsComponent implements OnInit {
   }
 
     onAddContact(){
-    this.router.navigateByUrl("/contacts/edit");
+    this.router.navigateByUrl("/contacts/edit/-1");
   }
     onAddContactReactiveForm(){
     this.router.navigateByUrl("/contacts/edit-reactive-form");

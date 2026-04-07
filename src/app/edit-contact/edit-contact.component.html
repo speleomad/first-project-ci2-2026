@@ -1,9 +1,11 @@
 <div class="card border-primary mb-3">
     <div class="card-header bg-primary text-white "> Edit Contact Component</div>
     <div class="card-body">
-        <h3>Add Contact</h3>
+        <!--  <h3>Add Contact</h3>  -->   
+        <h3 *ngIf="!contact!.id; else update">Add Contact</h3>   
+        <ng-template #update><h3>Update Contact</h3></ng-template> 
         <!--  <form> -->
-        <form (ngSubmit)="onSubmit(form)" #form="ngForm">
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
             <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" class="form-control" 
@@ -11,7 +13,7 @@
                     required 
                     #name="ngModel"
                     name="name"
-                    ngModel>
+                    [(ngModel)]="contact!.name">
                 <div *ngIf="name.invalid && name.dirty" class="invalid-feedback">
                     Please provide a name.
                 </div>
@@ -25,7 +27,7 @@
                            required
                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
                            #email="ngModel" 
-                           ngModel>
+                           [(ngModel)]="contact!.email">
                     <div *ngIf="email.invalid && email.dirty" class="invalid-feedback">
                         Please provide a valid email address.
                     </div>
@@ -38,7 +40,7 @@
                           required
                            pattern="https?://.+" 
                            #website="ngModel" 
-                           ngModel>
+                           [(ngModel)]="contact!.website">
                     <div *ngIf="website.invalid && website.dirty" class="invalid-feedback">
                         Please provide a valid URL(http://.....).
                     </div>
@@ -51,7 +53,7 @@
                      [ngClass]="{'is-invalid':projects.invalid && projects.dirty,'is-valid':projects.valid}"
                       required
                       #projects="ngModel" 
-                      ngModel>
+                      [(ngModel)]="contact!.projects">
                 <div *ngIf="projects.invalid && projects.dirty" class="invalid-feedback">
                     Please provide a project.
                 </div>
